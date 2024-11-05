@@ -30,4 +30,12 @@ print(bank_df)
 #Change the account type for a specific customer:
 bank_df.loc[bank_df["Name"] == "Alice", "Account Type"] ="Premium Savings"
 print(bank_df)
+#Remove a column (e.g., Account Type):
+bank_df.drop(columns=["Account Type"], inplace=True)
+print(bank_df)
+# Solution
+low_balance_accounts = bank_df[bank_df["Account Balance"] < 1000]
+bank_df["Balance Status"] = ["Low Balance" if x < 1000 else
+"Healthy" for x in bank_df["Account Balance"]]
+print(bank_df)
 
